@@ -97,7 +97,7 @@ function updateOutput(data) {
 
 	myChart.data.labels = data['years']
 	myChart.data.datasets[0].data = data['values']
-	myChart.options.scales.yAxes[0].ticks.max = Math.ceil(data['values'][data['values'].length - 1] / 10000) * 10000
+	myChart.options.scales.yAxes[0].ticks.max = Math.ceil(data['values'][data['values'].length - 1] / (10000)) * (10000)
 	myChart.options.scales.xAxes[0].ticks.max = data['years'].length
 	myChart.update()
 
