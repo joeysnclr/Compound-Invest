@@ -13,8 +13,5 @@ def calculate():
 	return render_template('calculate.html')
 
 
-# TO DO FOR FINAL PROJECT ( base level, presentable project)
-# - millionare after
-
 
 app.run(debug=True, port=5000)
