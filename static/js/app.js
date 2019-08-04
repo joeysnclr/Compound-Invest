@@ -19,6 +19,8 @@ function compoundData(principal, interest_rate, months_per_compound, years, cont
 	var graphYears = []
 	var graphValues = []
 
+
+	// get final value
 	var i = 0
 	while (i <= years * 12) {
 		var month = (i + 1) % 12
@@ -41,14 +43,33 @@ function compoundData(principal, interest_rate, months_per_compound, years, cont
 
 		i++;
 	}
+	// get "millionare after"
+	var val = principal
+	var i = 0
+	while (val <= 1000000) {
+		var month = (i + 1) % 12
+		if (month == 0) {
+			month = 12
+		}
+
+		if (month % months_per_contribution == 0) {
+			val += contribution_amount
+		}
+
+		if (month % months_per_compound == 0) {
+			val = val * (1 + (interest_rate / (12 / months_per_compound)))
+		}
+
+		i++;
+	}
 
 
-	var futureValue = Math.round(runningTotal)
+	var futureValue = round(runningTotal, 0)
 	var contributions = (12 / months_per_contribution) * contribution_amount * years
 	var totalInvested = contributions + principal
 	var interestAccrued = futureValue - totalInvested
 	var ROI = round(  (( futureValue - totalInvested ) / totalInvested) * 100  , 2)
-	var millionareAfter = 99
+	var millionareAfter = Math.ceil(i / 12)
 	return_data = {
 		"futureValue": futureValue,
 		"contributions": contributions,
@@ -72,25 +93,28 @@ function updateOutput(data) {
 	$("#invested").html(data['totalInvested'])
 	$("#contributed").html(data['contributions'])
 	$("#accrued").html(data['interestAccrued'])
-	new AutoNumeric.multiple('.output-value', {digitGroupSeparator: ',', allowDecimalPadding: false});
+	new AutoNumeric.multiple('.output-value', {digitGroupSeparator: ',', allowDecimalPadding: false, vMin: '0'});
 
 	myChart.data.labels = data['years']
 	myChart.data.datasets[0].data = data['values']
+	myChart.options.scales.yAxes[0].ticks.max = Math.ceil(data['values'][data['values'].length - 1] / 10000) * 10000
+	myChart.options.scales.xAxes[0].ticks.max = data['years'].length
 	myChart.update()
 
 	return
 }
 
 function formChange() {
-	var principal = Number($('[name="principal"]').val().replace(',', ''))
-	var rate = Number($('[name="rate"]').val().replace(',', ''))
-	var years = Number($('[name="years"]').val().replace(',', ''))
-	var contribution = Number($('[name="contribution"]').val().replace(',', ''))
+	var principal = Number($('[name="principal"]').val().replace(/,/g, ''))
+	var rate = Number($('[name="rate"]').val().replace(/,/g, ''))
+	var years = Number($('[name="years"]').val().replace(/,/g, ''))
+	var contribution = Number($('[name="contribution"]').val().replace(/,/g, ''))
 	var contribution_freq = $('[name="contribution_freq"]').val()
 	var compounded = $('[name="compounded"]').val()
+	console.log(principal)
 
 	var data = compoundData(Number(principal), Number(rate) / 100, Number(compounded), Number(years), Number(contribution), Number(contribution_freq))
-
+	console.log(data)
 	updateOutput(data)
 }
 formChange()

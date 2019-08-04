@@ -55,7 +55,7 @@
 								<span class="tooltiptext">Periodic addition to your investment.</span>
 							</span>
 						</p>
-						<p class="value">$ <input oninput="formChange()" size="7" type="text" name="contribution" value="3000"></p>
+						<p class="value">$ <input oninput="formChange()" size="7" type="text" name="contribution" value="250"></p>
 					</div>
 					<div class="col-xs-6 col-md-6 field">
 						<p class="label">Frequency
@@ -65,9 +65,9 @@
 						</p>
 						<p class="value">
 							<select name="contribution_freq" onchange="formChange()">
-								<option value="1">Monthly</option>
+								<option value="1" selected>Monthly</option>
 								<option value="3">Quarterly</option>
-								<option value="12" selected>Annually</option>
+								<option value="12">Annually</option>
 							</select>
 						</p>
 					</div>
@@ -103,9 +103,10 @@
 						<p class="name">Interest Accrued</p>
 						<p class="value"><span class="unit">$</span> <span class="output-value" id="accrued">55455</p>
 					</div>
-					<div class="col-xs-12 chart-container">
-						<canvas id="myChart"></canvas>
-					</div>
+					
+				</div>
+				<div class="col-xs-12 chart-container">
+					<canvas id="myChart"></canvas>
 				</div>
 			</div>
 		</div>
@@ -118,8 +119,8 @@
 <script type="text/javascript">
 
 	// number inputs and commas
-	new AutoNumeric.multiple('.value > input', {digitGroupSeparator: ',', allowDecimalPadding: false});
-	new AutoNumeric.multiple('.output-value', {digitGroupSeparator: ',', allowDecimalPadding: false});
+	new AutoNumeric.multiple('.value > input', {digitGroupSeparator: ',', allowDecimalPadding: false, vMin: '0'});
+	new AutoNumeric.multiple('.output-value', {digitGroupSeparator: ',', allowDecimalPadding: false, vMin: '0'});
 	
 
 
@@ -152,9 +153,9 @@
 	var myChart = new Chart(document.getElementById("myChart"), {
 	  type: 'line',
 	  data: {
-	    labels: [1500,1600,1700,1750,1800,1850,1900,1950,1999,2050],
+	    labels: [0,1],
 	    datasets: [{ 
-	        data: [86,114,106,106,107,111,133,221,783,2478],
+	        data: [0,0],
 	        label: "Value",
 	        borderColor: "#77E8B0",
 	        fill: true
@@ -171,19 +172,40 @@
 	  	},
 	  	scales: {
 	  		yAxes: [{
+	  			position: "right",
 	            gridLines: {
-	                // color: "rgba(0, 0, 0, 0)",
+	                color: "rgba(0, 0, 0, 0)",
+	            },
+	            ticks: {
+	            	fontColor: "#77E8B0",
+	            	fontSize: 10,
+					min: 0,
+					max: 100000,
+					maxTicksLimit: 2,
+					userCallback: function(value, index, values) {
+				        value = value.toString();
+				        value = value.split(/(?=(?:...)*$)/);
+				        value = '$'+value.join(',');
+				        return value;
+				    }
 	            }
 	        }],
 	        xAxes: [{
 	            gridLines: {
 	                // color: "rgba(0, 0, 0, 0)",
+	            },
+	            ticks: {
+	            	fontColor: "#77E8B0",
+	            	fontSize: 10
+
 	            }
 	        }]
 	  	},
 	  	elements: {
                 point:{
-                    radius: 2
+                    radius: 2,
+                    hoverRadius: 6,
+                    hoverBackgroundColor: "#77E8B0"
                 }
             }
 	  }
