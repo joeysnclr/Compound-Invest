@@ -176,8 +176,7 @@ select::after {
 	font-weight: normal;
 }
 .chart-container {
-	margin: 50px 0;
-	padding: 0 10%;
+	padding: 50px 10%;
 }
 
 
