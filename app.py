@@ -9,11 +9,8 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-	return render_template('index.html')
-
-@app.route('/calculate')
-def calculate():
 	return render_template('calculate.html')
+
 
 
 

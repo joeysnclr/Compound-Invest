@@ -1,0 +1,204 @@
+/* Default Styles */
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,700&display=swap');
+
+// scss variables
+$blue: #3168FF;
+$white: #ffffff;
+$grey1: #EBEBEB;
+$grey2: #808080;
+$grey3: #313131;
+
+// general
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+// font
+h1 {
+	font: 700 43px 'Roboto';
+}
+p {
+	font: 400 15px 'Roboto';
+}
+a {
+	display: inline-block;
+	color: $blue;
+	text-decoration: none;
+}
+.label {
+	font: 400 15px 'Roboto';
+}
+input, select {
+	color: $blue;
+	font: 700 23px 'Roboto';
+}
+span {
+	color: $grey3;
+	font: 400 23px 'Roboto';
+}
+.data-value {
+	color: $white;
+	font: 700 23px 'Roboto';
+}
+
+
+
+.half:nth-of-type(1) {
+	h1 {
+		color: $blue;
+	}
+	.label {
+		color: $grey2;
+	}
+}
+.half:nth-of-type(2) {
+	h1 {
+		color: $white;
+	}
+	.label {
+		color: $grey1;
+	}
+}
+
+// whitespace
+.main {
+	position: relative;
+	min-height: 100vh;
+}
+
+.container {
+	display: flex;
+	flex-wrap: wrap;
+}
+.content {
+	width: 100%;
+	padding: 15vh 7vw;
+}
+.flex {
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+}
+.c-50-50 {
+	width: 50%;
+}
+.c-33-50 {
+	width: 33%;
+}
+.c-100-100 {
+	width: 100%;
+}
+
+// components
+.logo {
+	position: absolute;
+	top: 5vh;
+	left: 7vw;
+}
+
+.half {
+	width: 50%;
+	min-height: 100vh;
+	h1 {
+		margin-bottom: 40px
+	}
+}
+.half:nth-of-type(1) {
+	background-color: $white;	
+}
+.half:nth-of-type(2) {
+	background-color: $blue;	
+}
+.data {
+	white-space: nowrap;
+	margin-bottom: 30px;
+	.label {
+		margin-bottom: 5px;
+	}
+	.data-value {
+		display: inline-block;
+		// text-shadow: 0px 2px 4px rgba(0,0,0,0.2)
+	}
+	input, select {
+		border: none;
+		background-color: $grey1;
+		-webkit-appearance: none;
+		-moz-appearance: none;
+		appearance: none;
+		padding: 5px 10px;
+		border-radius: 5px;
+		outline: none;
+		box-shadow: 2px 2px 5px rgba(0,0,0,0.08);
+	}
+}
+
+.footer {
+	position: absolute;
+	left: 7vw;
+	bottom: 10px;
+	i {
+		color: #FC5E5E;
+	}
+}
+
+
+
+@media only screen and (max-width: 992px) {
+	// whitespace
+	.content {
+		width: 100%;
+		padding: 7vh 7vw;
+	}
+	.c-50-50 {
+		width: 50%;
+	}
+	.c-33-50 {
+		width: 50%;
+	}
+	.c-100-100 {
+		width: 100%;
+	}
+	.half {
+		width: 100%;
+		min-height: 0;
+	}
+	// font styles
+	a {
+		color: $white;
+	}
+	// components
+	.logo {
+		position: relative;
+		top: 5vh;
+		left: 7vw;
+	}
+	.footer {
+		color: $white;
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

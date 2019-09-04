@@ -1,155 +1,112 @@
 {% extends 'layout.html' %}
 {% block body %}
 
+
+<img src="/static/images/logo.svg" alt="" class="logo">
 <div class="container">
-	<div class="row">
-
-		<div class="col-xs-12 col-md-5">
-			<form action="#" id="form">
-				<div class="col-xs-12">
-					<div class="col-xs-6 col-md-6 field">
-						<p class="label">Years To Grow
-							<span class="tooltip">?
-								<span class="tooltiptext">Length of your investment in years.</span>
-							</span>
-						</p>
-						<p class="value"><input oninput="formChange()" size="3" type="text" name="years" value="15"> Years</p>
-					</div>
-					<div class="col-xs-6 col-md-6 field">
-						<p class="label">Compounded
-							<span class="tooltip">?
-								<span class="tooltiptext">How often your investment is compounded.</span>
-							</span>
-						</p>
-						<p class="value">
-							<select name="compounded" onchange="formChange()">
-								<option value="1">Monthly</option>
-								<option value="3">Quarterly</option>
-								<option value="12" selected>Annually</option>
-							</select>
-						</p>
-					</div>
+	<div class="half">
+		<div class="content">
+			<h1>Investment</h1>
+			<div class="flex">
+				<div class="c-50-50 data">
+					<p class="label">Years to grow</p>
+					<input oninput="formChange()" size="3" type="text" name="years" value="15">
+					<span> Years</span>
 				</div>
-				<div class="col-xs-12">
-					<div class="col-xs-6 col-md-6 field">
-						<p class="label">Principal
-							<span class="tooltip">?
-								<span class="tooltiptext">Current/starting amount of money.</span>
-							</span>
-						</p>
-						<p class="value">$ <input oninput="formChange()" size="7" type="text" name="principal" value="10000"></p>
-					</div>
-					<div class="col-xs-6 col-md-6 field">
-						<p class="label">Interest Rate
-							<span class="tooltip">?
-								<span class="tooltiptext">Percent that your money grows at each year.</span>
-							</span>
-						</p>
-						<p class="value"><input oninput="formChange()" size="4" type="text" name="rate" value="7"> %</p>
-					</div>
+				<div class="c-50-50 data">
+					<p class="label">Compounded</p>
+					<select name="compounded" onchange="formChange()">
+						<option value="1">Monthly</option>
+						<option value="3">Quarterly</option>
+						<option value="12" selected>Annually</option>
+					</select>
 				</div>
-				<div class="col-xs-12">
-					<div class="col-xs-6 col-md-6 field">
-						<p class="label">Contribution
-							<span class="tooltip">?
-								<span class="tooltiptext">Periodic addition to your investment.</span>
-							</span>
-						</p>
-						<p class="value">$ <input oninput="formChange()" size="7" type="text" name="contribution" value="250"></p>
-					</div>
-					<div class="col-xs-6 col-md-6 field">
-						<p class="label">Frequency
-							<span class="tooltip">?
-								<span class="tooltiptext">How frequent you add to your investment.</span>
-							</span>
-						</p>
-						<p class="value">
-							<select name="contribution_freq" onchange="formChange()">
-								<option value="1" selected>Monthly</option>
-								<option value="3">Quarterly</option>
-								<option value="12">Annually</option>
-							</select>
-						</p>
-					</div>
+				<div class="c-50-50 data">
+					<p class="label">Principal</p>
+					<span>$ </span>
+					<input oninput="formChange()" size="7" type="text" name="principal" value="10000">
 				</div>
-			</form>
-		</div>
-
-
-		<div class="col-xs-12 col-md-7">
-			<div class="output-container">
-				<div class="output">
-					<div class="col-xs-6 col-md-4 data">
-						<p class="name">Future Value</p>
-						<p class="value"><span class="unit">$</span> <span class="output-value" id="future">110445</p>
-					</div>
-					<div class="col-xs-6 col-md-4 data">
-						<p class="name">ROI</p>
-						<p class="value"><span class="output-value" id="roi">100.81</span> <span class="unit">%</span></p>
-					</div>
-					<div class="col-xs-6 col-md-4 data">
-						<p class="name">Millionare After</p>
-						<p class="value"><span class="output-value" id="milli">42</span> <span class="unit">Years</span></p>
-					</div>
-					<div class="col-xs-6 col-md-4 data">
-						<p class="name">Total Invested</p>
-						<p class="value"><span class="unit">$</span> <span class="output-value" id="invested">55000</p>
-					</div>
-					<div class="col-xs-6 col-md-4 data">
-						<p class="name">Contributions</p>
-						<p class="value"><span class="unit">$</span> <span class="output-value" id="contributed">45000</p>
-					</div>
-					<div class="col-xs-6 col-md-4 data">
-						<p class="name">Interest Accrued</p>
-						<p class="value"><span class="unit">$</span> <span class="output-value" id="accrued">55455</p>
-					</div>
-					
+				<div class="c-50-50 data">
+					<p class="label">Interest Rate</p>
+					<input oninput="formChange()" size="4" type="text" name="rate" value="7">
+					<span> %</span>
 				</div>
-				<div class="col-xs-12 chart-container">
-					<canvas id="myChart"></canvas>
+				<div class="c-50-50 data">
+					<p class="label">Contribution</p>
+					<span>$ </span>
+					<input oninput="formChange()" size="7" type="text" name="contribution" value="250">
+				</div>
+				<div class="c-50-50 data">
+					<p class="label">Frequency</p>
+					<select name="contribution_freq" onchange="formChange()">
+						<option value="1" selected>Monthly</option>
+						<option value="3">Quarterly</option>
+						<option value="12">Annually</option>
+					</select>
 				</div>
 			</div>
 		</div>
-
-
 	</div>
-
+	<div class="half">
+		<div class="content">
+			<h1>Outcome</h1>
+			<div class="flex">
+				<div class="c-33-50 data">
+					<p class="label">Future Value</p>
+					<span>$ </span>
+					<p class="data-value" id="future">108504</p>
+				</div>
+				<div class="c-33-50 data">
+					<p class="label">ROI</p>
+					<p class="data-value" id="roi">97.28</p>
+					<span> %</span>
+				</div>
+				<div class="c-33-50 data">
+					<p class="label">Millionare After</p>
+					<p class="data-value" id="milli">44</p>
+					<span> Years</span>
+				</div>
+				<div class="c-33-50 data">
+					<p class="label">Total Invested</p>
+					<span>$ </span>
+					<p class="data-value" id="invested">55000</p>
+				</div>
+				<div class="c-33-50 data">
+					<p class="label">Contributions</p>
+					<span>$ </span>
+					<p class="data-value" id="contributed">45000</p>
+					
+				</div>
+				<div class="c-33-50 data">
+					<p class="label">Interest Accrued</p>
+					<span>$ </span>
+					<p class="data-value" id="accrued">53504</p>
+				</div>
+			</div>
+			<div class="c-100-100">
+				<canvas id="myChart"></canvas>
+			</div>
+		</div>
+	</div>
 </div>
+<p class="footer">Made with <i class="fas fa-heart"></i> by <a href="http://josephsinclair.herokuapp.com">Joseph Sinclair</a></p>
 
 <script type="text/javascript">
 
 	// number inputs and commas
-	new AutoNumeric.multiple('.value > input', {digitGroupSeparator: ',', allowDecimalPadding: false, vMin: '0'});
-	new AutoNumeric.multiple('.output-value', {digitGroupSeparator: ',', allowDecimalPadding: false, vMin: '0'});
-	
-
-
-	// detect form change
-	
-
-	// $('form').on('keyup change paste', 'input, select, textarea', function(){
-	// 	formChange()
-	// });
-
-
-	// $("#form :input").change(function() {
-	// 	formChange()
-	// });
-
-
-	// $("#form")
-	//     .on("input", function() {
-	// 		formChange()
-
-	//     });
-
-
-
-
-
-
+	new AutoNumeric.multiple('input', {digitGroupSeparator: ',', allowDecimalPadding: false, minimumValue: '0'});
+	new AutoNumeric.multiple('.data-value', {digitGroupSeparator: ',', allowDecimalPadding: false, minimumValue: '0'});
 
 	// chart.js init
+	Chart.plugins.register({
+		beforeDraw: function(chartInstance, easing) {
+			var ctx = chartInstance.chart.ctx;
+			ctx.fillStyle = 'white'; // your color here
+
+			var chartArea = chartInstance.chartArea;
+			ctx.fillRect(chartArea.left, chartArea.top, chartArea.right - chartArea.left, chartArea.bottom - chartArea.top);
+		}
+	});
 	var myChart = new Chart(document.getElementById("myChart"), {
 	  type: 'line',
 	  data: {
@@ -157,7 +114,8 @@
 	    datasets: [{ 
 	        data: [0,0],
 	        label: "Value",
-	        borderColor: "#77E8B0",
+	        borderColor: "#3168FF",
+	        backgroundColor: "rgba(0,0,0,0)",
 	        fill: true
 	      }
 	    ]
@@ -167,18 +125,27 @@
 	  		display: false
 	  	},
 	  	tooltips: {
-	  		displayColors: false
+	  		displayColors: false,
+                mode: 'point',
+                callbacks: {
+                	title: function(tooltipItem, data) {
+                		return tooltipItem[0].label + " Years"
+                	},
+					label: function(tooltipItem, data) {
+					    return "$" + tooltipItem.yLabel.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");;
+					}
+                }
 
 	  	},
 	  	scales: {
 	  		yAxes: [{
 	  			position: "right",
 	            gridLines: {
-	                color: "rgba(0, 0, 0, 0)",
+	                display: false
 	            },
 	            ticks: {
-	            	fontColor: "#77E8B0",
-	            	fontSize: 10,
+	            	fontColor: "#ffffff",
+	            	fontSize: 12,
 					min: 0,
 					max: 100000,
 					maxTicksLimit: 2,
@@ -191,13 +158,13 @@
 	            }
 	        }],
 	        xAxes: [{
+	        	labelString: "Years",
 	            gridLines: {
-	                // color: "rgba(0, 0, 0, 0)",
+	                display: false
 	            },
 	            ticks: {
-	            	fontColor: "#77E8B0",
-	            	fontSize: 10
-
+	            	fontColor: "#ffffff",
+	            	fontSize: 12
 	            }
 	        }]
 	  	},
@@ -205,7 +172,7 @@
                 point:{
                     radius: 2,
                     hoverRadius: 6,
-                    hoverBackgroundColor: "#77E8B0"
+                    hoverBackgroundColor: "#3168FF"
                 }
             }
 	  }

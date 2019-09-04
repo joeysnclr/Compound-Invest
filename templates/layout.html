@@ -4,17 +4,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Compound Invest</title>
 	
-	<!-- Tailwind -->
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/1.0.5/tailwind.min.css"/>
 
-	<!-- Bootstrap Grid -->
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-grid-only@1.0.0/bootstrap.css">
-
-	<!-- Hover.css -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.3.1/css/hover-min.css" integrity="sha256-c+C87jupO1otD1I5uyxV68WmSLCqtIoNlcHLXtzLCT0=" crossorigin="anonymous" />
-
-    <!-- Animate.css -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.css" integrity="sha256-a2tobsqlbgLsWs7ZVUGgP5IvWZsx8bTNQpzsqCSm5mk=" crossorigin="anonymous" />
 
 	<!-- Custom CSS -->
 	<link rel="stylesheet" type="text/css" href="./static/css/styles.css">
@@ -43,13 +33,124 @@
 </head>
 <body>
 	<div class="main">
-	{% include 'includes/nav.html' %}
-    {% block body %}{% endblock %}
-   	{% include 'includes/footer.html' %}
-
+        {% block body %}{% endblock %}
     </div>
  
     <!-- Custom JS -->
     <script src="./static/js/app.js"></script>
 </body>
 </html>
+<!-- <div class="container">
+    <div class="row">
+
+        <div class="col-xs-12 col-md-5">
+            <form action="#" id="form">
+                <div class="col-xs-12">
+                    <div class="col-xs-6 col-md-6 field">
+                        <p class="label">Years To Grow
+                            <span class="tooltip">?
+                                <span class="tooltiptext">Length of your investment in years.</span>
+                            </span>
+                        </p>
+                        <p class="value"><input oninput="formChange()" size="3" type="text" name="years" value="15"> Years</p>
+                    </div>
+                    <div class="col-xs-6 col-md-6 field">
+                        <p class="label">Compounded
+                            <span class="tooltip">?
+                                <span class="tooltiptext">How often your investment is compounded.</span>
+                            </span>
+                        </p>
+                        <p class="value">
+                            <select name="compounded" onchange="formChange()">
+                                <option value="1">Monthly</option>
+                                <option value="3">Quarterly</option>
+                                <option value="12" selected>Annually</option>
+                            </select>
+                        </p>
+                    </div>
+                </div>
+                <div class="col-xs-12">
+                    <div class="col-xs-6 col-md-6 field">
+                        <p class="label">Principal
+                            <span class="tooltip">?
+                                <span class="tooltiptext">Current/starting amount of money.</span>
+                            </span>
+                        </p>
+                        <p class="value">$ <input oninput="formChange()" size="7" type="text" name="principal" value="10000"></p>
+                    </div>
+                    <div class="col-xs-6 col-md-6 field">
+                        <p class="label">Interest Rate
+                            <span class="tooltip">?
+                                <span class="tooltiptext">Percent that your money grows at each year.</span>
+                            </span>
+                        </p>
+                        <p class="value"><input oninput="formChange()" size="4" type="text" name="rate" value="7"> %</p>
+                    </div>
+                </div>
+                <div class="col-xs-12">
+                    <div class="col-xs-6 col-md-6 field">
+                        <p class="label">Contribution
+                            <span class="tooltip">?
+                                <span class="tooltiptext">Periodic addition to your investment.</span>
+                            </span>
+                        </p>
+                        <p class="value">$ <input oninput="formChange()" size="7" type="text" name="contribution" value="250"></p>
+                    </div>
+                    <div class="col-xs-6 col-md-6 field">
+                        <p class="label">Frequency
+                            <span class="tooltip">?
+                                <span class="tooltiptext">How frequent you add to your investment.</span>
+                            </span>
+                        </p>
+                        <p class="value">
+                            <select name="contribution_freq" onchange="formChange()">
+                                <option value="1" selected>Monthly</option>
+                                <option value="3">Quarterly</option>
+                                <option value="12">Annually</option>
+                            </select>
+                        </p>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+
+        <div class="col-xs-12 col-md-7">
+            <div class="output-container">
+                <div class="output">
+                    <div class="col-xs-6 col-md-4 data">
+                        <p class="name">Future Value</p>
+                        <p class="value"><span class="unit">$</span> <span class="output-value" id="future">110445</p>
+                    </div>
+                    <div class="col-xs-6 col-md-4 data">
+                        <p class="name">ROI</p>
+                        <p class="value"><span class="output-value" id="roi">100.81</span> <span class="unit">%</span></p>
+                    </div>
+                    <div class="col-xs-6 col-md-4 data">
+                        <p class="name">Millionare After</p>
+                        <p class="value"><span class="output-value" id="milli">42</span> <span class="unit">Years</span></p>
+                    </div>
+                    <div class="col-xs-6 col-md-4 data">
+                        <p class="name">Total Invested</p>
+                        <p class="value"><span class="unit">$</span> <span class="output-value" id="invested">55000</p>
+                    </div>
+                    <div class="col-xs-6 col-md-4 data">
+                        <p class="name">Contributions</p>
+                        <p class="value"><span class="unit">$</span> <span class="output-value" id="contributed">45000</p>
+                    </div>
+                    <div class="col-xs-6 col-md-4 data">
+                        <p class="name">Interest Accrued</p>
+                        <p class="value"><span class="unit">$</span> <span class="output-value" id="accrued">55455</p>
+                    </div>
+                    
+                </div>
+                <div class="col-xs-12 chart-container">
+                    <canvas id="myChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+</div> -->

@@ -93,7 +93,7 @@ function updateOutput(data) {
 	$("#invested").html(data['totalInvested'])
 	$("#contributed").html(data['contributions'])
 	$("#accrued").html(data['interestAccrued'])
-	new AutoNumeric.multiple('.output-value', {digitGroupSeparator: ',', allowDecimalPadding: false, vMin: '0'});
+	new AutoNumeric.multiple('.data-value', {digitGroupSeparator: ',', allowDecimalPadding: false, minimumValue: '0'});
 
 	myChart.data.labels = data['years']
 	myChart.data.datasets[0].data = data['values']
@@ -111,11 +111,9 @@ function formChange() {
 	var contribution = Number($('[name="contribution"]').val().replace(/,/g, ''))
 	var contribution_freq = $('[name="contribution_freq"]').val()
 	var compounded = $('[name="compounded"]').val()
-	console.log(principal)
 
 	var data = compoundData(Number(principal), Number(rate) / 100, Number(compounded), Number(years), Number(contribution), Number(contribution_freq))
-	console.log(data)
 	updateOutput(data)
 }
-formChange()
 
+formChange()
